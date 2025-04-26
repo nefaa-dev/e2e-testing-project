@@ -1,0 +1,101 @@
+(pcb "New Board"
+  (parser
+    (string_quote ")
+    (space_in_quoted_tokens on)
+    (host_cad DeepPCB)
+  )
+  (resolution um 10)
+  (unit um)
+  (structure
+    (layer L0
+      (type signal)
+      (property
+        (index 0)
+      )
+    )
+    (layer L1
+      (type signal)
+      (property
+        (index 1)
+      )
+    )
+    (boundary (path signal 0 0 0 10000 0 10000 10000 0 10000 0 0))
+    (control
+      (via_at_smd off)
+    )
+    (via Circle Blind_Circle_Padstack)
+    (rule
+      (width 100)
+      (clearance 100)
+    )
+  )
+  (placement (place_control (flip_style rotate_first))
+    (component Rectangle
+      (place C0 2692.3 7460.5 front 0)
+      (place C1 5104.5 7460.5 front 0)
+      (place C2 2644 5723.7 front 0)
+      (place C3 5152.8 5723.7 front 0)
+    )
+  )
+  (library
+    (image Circle
+      (outline (path signal 50 -225 -225 225 -225 225 225 -225 225 -225 -225))
+      (pin Circle 1 0 0)
+    )
+    (image Circle_SMD
+      (pin Circle_SMD 1 0 0)
+    )
+    (image Circle_SMD_Via_Allowed
+      (pin Circle_SMD_Via_Allowed 1 0 0)
+    )
+    (image Rectangle
+      (outline (path signal 50 -375 -225 375 -225 375 225 -375 225 -375 -225))
+      (pin Rectangle 1 0 0)
+    )
+    (image Rectangle_SMD
+      (outline (path signal 50 -375 -225 375 -225 375 225 -375 225 -375 -225))
+      (pin Rectangle_SMD 1 0 0)
+    )
+    (image RoundedRectangle
+      (outline (path signal 50 -375 -225 375 -225 375 225 -375 225 -375 -225))
+      (pin RoundedRectangle 1 0 0)
+    )
+    (image RoundedRectangle_SMD
+      (outline (path signal 50 -375 -225 375 -225 375 225 -375 225 -375 -225))
+      (pin RoundedRectangle_SMD 1 0 0)
+    )
+    (padstack Circle
+      (shape (circle L0 300))
+      (shape (circle L1 300))
+    )
+    (padstack Blind_Circle_Padstack
+      (shape (circle L0 300))
+      (shape (circle L1 300))
+    )
+    (padstack Rectangle
+      (shape (rect L0 -300 -150 300 150))
+      (shape (rect L1 -300 -150 300 150))
+    )
+    (padstack Rectangle_SMD
+      (shape (rect L0 -300 -150 300 150))
+      (attach off)
+    )
+    (padstack RoundedRectangle
+      (shape (polygon L0 0 300 75 298.6 89.6 294.3 103.7 287.4 116.7 278 128 266.7 137.4 253.7 144.3 239.6 148.6 225 150 -225 150 -239.6 148.6 -253.7 144.3 -266.7 137.4 -278 128 -287.4 116.7 -294.3 103.7 -298.6 89.6 -300 75 -300 -75 -298.6 -89.6 -294.3 -103.7 -287.4 -116.7 -278 -128 -266.7 -137.4 -253.7 -144.3 -239.6 -148.6 -225 -150 225 -150 239.6 -148.6 253.7 -144.3 266.7 -137.4 278 -128 287.4 -116.7 294.3 -103.7 298.6 -89.6 300 -75))
+      (shape (polygon L1 0 300 75 298.6 89.6 294.3 103.7 287.4 116.7 278 128 266.7 137.4 253.7 144.3 239.6 148.6 225 150 -225 150 -239.6 148.6 -253.7 144.3 -266.7 137.4 -278 128 -287.4 116.7 -294.3 103.7 -298.6 89.6 -300 75 -300 -75 -298.6 -89.6 -294.3 -103.7 -287.4 -116.7 -278 -128 -266.7 -137.4 -253.7 -144.3 -239.6 -148.6 -225 -150 225 -150 239.6 -148.6 253.7 -144.3 266.7 -137.4 278 -128 287.4 -116.7 294.3 -103.7 298.6 -89.6 300 -75))
+    )
+    (padstack RoundedRectangle_SMD
+      (shape (polygon L0 0 300 75 298.6 89.6 294.3 103.7 287.4 116.7 278 128 266.7 137.4 253.7 144.3 239.6 148.6 225 150 -225 150 -239.6 148.6 -253.7 144.3 -266.7 137.4 -278 128 -287.4 116.7 -294.3 103.7 -298.6 89.6 -300 75 -300 -75 -298.6 -89.6 -294.3 -103.7 -287.4 -116.7 -278 -128 -266.7 -137.4 -253.7 -144.3 -239.6 -148.6 -225 -150 225 -150 239.6 -148.6 253.7 -144.3 266.7 -137.4 278 -128 287.4 -116.7 294.3 -103.7 298.6 -89.6 300 -75))
+      (attach off)
+    )
+  )
+  (network
+    (net net1
+      (pins C0-1 C1-1)
+    )
+    (net net2
+      (pins C2-1 C3-1)
+    )
+  )
+  (wiring)
+)

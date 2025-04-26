@@ -1,0 +1,146 @@
+# app-boot-up:
+#   stage: e2e-tests
+#   timeout: 5m
+#   tags:
+#     - kao-products
+#     - pcb
+#   allow_failure: false
+#   image: alpine/k8s:1.24.9
+#   needs: 
+#     - deploy-anakin-apps-kao-products-auto
+#   except:
+#     - release
+#     - master
+#   before_script:
+#     - export RELEASE_NAME=$(eval "echo ${CI_COMMIT_REF_SLUG:0:15} | sed 's/-*$//'")
+#     - export NAMESPACE="int-product-deeppcb-anakin"
+#     - cd $CI_PROJECT_DIR/components/e2e-tests/
+#     - mkdir -p artifacts
+
+#   script:
+#     - chmod +x ./shell/boot.sh
+#     - ./shell/boot.sh
+#   artifacts:
+#     when: always
+#     paths:
+#       - $CI_PROJECT_DIR/components/e2e-tests/artifacts
+
+
+# app-boot-up-staging:
+#   stage: e2e-tests
+#   timeout: 5m
+#   tags:
+#     - anakin-dev-gcp
+#   allow_failure: false
+#   image: alpine/k8s:1.24.9
+#   needs: 
+#     - deploy-anakin-apps-staging
+#   only:
+#     refs:
+#      - /^release.*/
+#   environment: staging
+#   before_script:
+#     - export NAMESPACE="deep-pcb"
+#     - cd $CI_PROJECT_DIR/components/e2e-tests/
+#     - mkdir -p artifacts
+
+#   script:
+#     - chmod +x ./shell/boot.sh
+#     - ./shell/boot.sh
+#   artifacts:
+#     when: always
+#     paths:
+#       - $CI_PROJECT_DIR/components/e2e-tests/artifacts
+
+
+
+e2e-test:
+  stage: e2e-tests
+  tags:
+    - kao-products
+    - pcb
+  allow_failure: false
+  except:
+    - release
+    - master
+  image: mcr.microsoft.com/playwright:v1.51.1-noble
+  needs:
+    - deploy-anakin-apps-kao-products-auto
+  variables:
+    IS_HEADLESS: true
+  before_script:
+    - RELEASE_NAME=$(eval "echo ${CI_COMMIT_REF_SLUG:0:15} | sed 's/-*$//'")
+    - export ANAKIN_INGRESS_BASE="dev.kao.deeppcb.ai"
+    - export WEB_URL="https://$RELEASE_NAME.$ANAKIN_INGRESS_BASE"
+    - echo $WEB_URL
+  
+  script:
+    
+    - cd $CI_PROJECT_DIR/components/e2e-tests/
+    - npm ci
+    - npm test || TEST_FAILED=true
+    - npm install --cache .npm --prefer-offline --no-save @testmo/testmo-cli
+    - npx testmo automation:resources:add-field --name git --type string --value $CI_COMMIT_SHORT_SHA --resources resources.json
+    - npx testmo automation:resources:add-link --name build --url $CI_PIPELINE_URL --resources resources.json
+    - npx testmo automation:run:submit --instance "https://instadeepltd.testmo.net/" --project-id 7 --name "$RELEASE_NAME" --source "frontend" --resources resources.json --results $CI_PROJECT_DIR/components/e2e-tests/artifacts/test-results/cucumber-report.xml
+    - if [ "$TEST_FAILED" = "true" ]; then exit 1; fi
+
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - $CI_PROJECT_DIR/components/e2e-tests/artifacts/test-results/cucumber-report.xml
+    paths:
+        - $CI_PROJECT_DIR/components/e2e-tests/artifacts
+
+
+
+e2e-test-staging:
+  stage: e2e-tests
+  tags:
+    - anakin-dev-gcp
+  allow_failure: false
+  only:
+    refs:
+      - /^release.*$/
+  image: mcr.microsoft.com/playwright:v1.51.1-noble
+  needs:
+    - deploy-anakin-apps-staging
+  variables:
+    IS_HEADLESS: true
+  environment: staging
+  before_script:
+    - export WEB_URL="https://staging.dev.deeppcb.ai"
+    - echo $WEB_URL
+  
+  script:
+    - cd $CI_PROJECT_DIR/components/e2e-tests/
+    - npm ci
+    - npm test || TEST_FAILED=true
+    - npm install --cache .npm --prefer-offline --no-save @testmo/testmo-cli
+    - npx testmo automation:resources:add-field --name git --type string --value $CI_COMMIT_SHORT_SHA --resources resources.json
+    - npx testmo automation:resources:add-link --name build --url $CI_PIPELINE_URL --resources resources.json
+    - npx testmo automation:run:submit --instance "https://instadeepltd.testmo.net/" --project-id 7 --name "$RELEASE_NAME" --source "frontend" --resources resources.json --results $CI_PROJECT_DIR/components/e2e-tests/artifacts/test-results/cucumber-report.xml
+    - if [ "$TEST_FAILED" = "true" ]; then exit 1; fi
+
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - $CI_PROJECT_DIR/components/e2e-tests/artifacts/test-results/cucumber-report.xml
+    paths:
+        - $CI_PROJECT_DIR/components/e2e-tests/artifacts

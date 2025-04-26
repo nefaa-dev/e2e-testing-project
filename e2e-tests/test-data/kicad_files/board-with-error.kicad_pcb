@@ -1,0 +1,296 @@
+
+  (kicad_pcb
+    (version 20221018)
+    (generator DeepPCB)
+    (layers
+      (0 "F.Cu" signal L0)
+      (1 "B.Cu" signal L1)
+      (36 "B.SilkS" user "B.SilkScreen")
+      (37 "F.SilkS" user "F.SilkScreen")
+      (44 "Edge.Cuts" user)
+    )
+    (net 0 "")
+    (net 1 "net1")
+    (net 2 "net2")
+    (footprint ""
+      (layer "F.Cu")
+      (at 2692.3 -7460.5 0)
+      (fp_text reference "C0"
+        (at 0 -0 0) (layer "F.SilkS") (effects (font (size 1 1) (thickness 0.15)))
+      )
+      (fp_circle
+        (center -375 225)
+        (end -350 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center 375 225)
+        (end 400 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center 375 -225)
+        (end 400 -225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center -375 -225)
+        (end -350 -225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center -375 225)
+        (end -350 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy -375 250)
+          (xy -375 200)
+          (xy 375 200)
+          (xy 375 250)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy 400 225)
+          (xy 350 225)
+          (xy 350 -225)
+          (xy 400 -225)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy 375 -250)
+          (xy 375 -200)
+          (xy -375 -200)
+          (xy -375 -250)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy -400 -225)
+          (xy -350 -225)
+          (xy -350 225)
+          (xy -400 225)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (pad "1" thru_hole rect
+        (at 0 0)
+        (size 600 300)
+        (drill 150)
+        (layers "F.Cu" "B.Cu")
+        (net 1 "net1")
+      )
+    )
+    (footprint ""
+      (layer "F.Cu")
+      (at 5104.5 -7460.5 0)
+      (fp_text reference "C1"
+        (at 0 -0 0) (layer "F.SilkS") (effects (font (size 1 1) (thickness 0.15)))
+      )
+      (fp_circle
+        (center -375 225)
+        (end -350 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center 375 225)
+        (end 400 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center 375 -225)
+        (end 400 -225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center -375 -225)
+        (end -350 -225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center -375 225)
+        (end -350 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy -375 250)
+          (xy -375 200)
+          (xy 375 200)
+          (xy 375 250)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy 400 225)
+          (xy 350 225)
+          (xy 350 -225)
+          (xy 400 -225)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy 375 -250)
+          (xy 375 -200)
+          (xy -375 -200)
+          (xy -375 -250)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy -400 -225)
+          (xy -350 -225)
+          (xy -350 225)
+          (xy -400 225)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (pad "1" thru_hole rect
+        (at 0 0)
+        (size 600 300)
+        (drill 150)
+        (layers "F.Cu" "B.Cu")
+      )
+    )
+    (footprint ""
+      (layer "F.Cu")
+      (at 2644 -5723.7 0)
+      (fp_text reference "C2"
+        (at 0 -0 0) (layer "F.SilkS") (effects (font (size 1 1) (thickness 0.15)))
+      )
+      (fp_circle
+        (center -375 225)
+        (end -350 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center 375 225)
+        (end 400 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center 375 -225)
+        (end 400 -225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center -375 -225)
+        (end -350 -225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center -375 225)
+        (end -350 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy -375 250)
+          (xy -375 200)
+          (xy 375 200)
+          (xy 375 250)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy 400 225)
+          (xy 350 225)
+          (xy 350 -225)
+          (xy 400 -225)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy 375 -250)
+          (xy 375 -200)
+          (xy -375 -200)
+          (xy -375 -250)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy -400 -225)
+          (xy -350 -225)
+          (xy -350 225)
+          (xy -400 225)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (pad "1" thru_hole rect
+        (at 0 0)
+        (size 600 300)
+        (drill 150)
+        (layers "F.Cu" "B.Cu")
+      )
+    )
+    (footprint ""
+      (layer "F.Cu")
+      (at 5152.8 -5723.7 0)
+      (fp_text reference "C3"
+        (at 0 -0 0) (layer "F.SilkS") (effects (font (size 1 1) (thickness 0.15)))
+      )
+      (fp_circle
+        (center -375 225)
+        (end -350 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center 375 225)
+        (end 400 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center 375 -225)
+        (end 400 -225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center -375 -225)
+        (end -350 -225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_circle
+        (center -375 225)
+        (end -350 225) (stroke (width 0.12) (type solid)) (fill none) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy -375 250)
+          (xy -375 200)
+          (xy 375 200)
+          (xy 375 250)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy 400 225)
+          (xy 350 225)
+          (xy 350 -225)
+          (xy 400 -225)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy 375 -250)
+          (xy 375 -200)
+          (xy -375 -200)
+          (xy -375 -250)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (fp_poly
+        (pts
+          (xy -400 -225)
+          (xy -350 -225)
+          (xy -350 225)
+          (xy -400 225)
+        ) (stroke (width 0.12) (type solid)) (fill yes) (layer "F.SilkS")
+      )
+      (pad "1" thru_hole rect
+        (at 0 0)
+        (size 600 300)
+        (drill 150)
+        (layers "F.Cu" "B.Cu")
+      )
+    )
+    (gr_line
+      (start 0 -0)
+      (end 10000 -0) (stroke (width 0.12) (type solid)) (layer "Edge.Cuts")
+    )
+    (gr_line
+      (start 10000 -0)
+      (end 10000 -10000) (stroke (width 0.12) (type solid)) (layer "Edge.Cuts")
+    )
+    (gr_line
+      (start 10000 -10000)
+      (end 0 -10000) (stroke (width 0.12) (type solid)) (layer "Edge.Cuts")
+    )
+    (gr_line
+      (start 0 -10000)
+      (end 0 -0) (stroke (width 0.12) (type solid)) (layer "Edge.Cuts")
+    )
+    (gr_line
+      (start 0 -0)
+      (end 0 -0) (stroke (width 0.12) (type solid)) (layer "Edge.Cuts")
+    )
+  )

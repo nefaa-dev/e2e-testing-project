@@ -1,0 +1,5 @@
+Layer,Direction,Type,Planes,Allowed Nets,Actions
+1,Any,Signal,-,D3_2 D1_2 3V3 GND +54,
+2,Any,Signal,-,D3_2 D1_2 3V3 GND +54,
+21,Any,Signal,-,D3_2 D1_2 3V3 GND +54,
+22,Any,Signal,-,D3_2 D1_2 3V3 GND +54,

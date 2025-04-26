@@ -1,0 +1,27 @@
+{
+  "default": {
+    "tags": "@active",
+    "formatOptions": {
+      "snippetInterface": "async-await"
+    },
+    "paths": [
+      "./src/test/features/**/**/*.feature"
+    ],
+    "retry": 2,
+    "publishQuiet": true,
+    "dryRun": false,
+    "require": [
+      "./src/test/steps/**/**/*.steps.ts",
+      "./src/hooks/hooks.ts"
+    ],
+    "requireModule": [
+      "ts-node/register"
+    ],
+    "format": [
+      "progress-bar",
+      "json:./artifacts/reports/cucumber_report.json",
+      "junit:./artifacts/test-results/cucumber-report.xml"
+    ],
+    "parallel": 3
+  }
+}

@@ -1,0 +1,157 @@
+import { Given, Then, When } from "@cucumber/cucumber";
+import { Boards_page } from "../../pages/boards_page.ts_";
+import { Container, ContainerKeys } from "../../containers/container";
+
+const { setDefaultTimeout } = require('@cucumber/cucumber');
+
+setDefaultTimeout(5 * 60 * 1000);
+
+let boardsPage: Boards_page;
+
+Given('I click on My Board button', async function () {
+    boardsPage = new Boards_page(Container.resolve(ContainerKeys.page));
+    await boardsPage.boardPage();
+});
+
+Then('the board page is displayed', async function () {
+    await boardsPage.boardPage();
+});
+
+Given('I click on New Board button', async function () {
+    boardsPage = new Boards_page(Container.resolve(ContainerKeys.page));
+    await boardsPage.clickOnNewBoardButton();
+});
+
+Then('the new board modal is displayed', async function () {
+    await boardsPage.verifyNewBoardModalDisplayed();
+});
+
+Then('the new board modal displays different radio input for different file types', async function () {
+    await boardsPage.verifyNewBoardModalRadioInputs();
+});
+
+Then('the radio inputs should work as expected and display the correct file type', async function () {
+    await boardsPage.verifyNewBoardModalRadioInputFunctionality();
+});
+
+Given('I click on View Board in Progress button', async function () {
+    boardsPage = new Boards_page(Container.resolve(ContainerKeys.page));
+    await boardsPage.clickOnInProgressBoardsWidgetButton();
+});
+
+Then('the board in progress is displayed', async function () {
+    await boardsPage.progView();
+});
+
+Given('I click on View Routed Board button', async function () {
+    boardsPage = new Boards_page(Container.resolve(ContainerKeys.page));
+    await boardsPage.clickOnAcceptedBoardsWidgetButton();
+});
+
+Then('the board in routed view is displayed', async function () {
+    await boardsPage.routeView();
+});
+
+When('I click on Board button', async function () {
+    boardsPage = new Boards_page(Container.resolve(ContainerKeys.page));
+    await boardsPage.clickOnBoardsTableAction();
+});
+
+Then('all boards are displayed', async function () {
+    await boardsPage.verifyAriaPressedStateChange('Boards');
+});
+
+When('I click on Running', async function () {
+    await boardsPage.clickOnRunningTableAction();
+});
+
+Then('all running boards are displayed', async function () {
+    await boardsPage.verifyAriaPressedStateChange('Running');
+});
+
+When('I click on Accepted', async function () {
+    await boardsPage.clickOnAcceptedTableAction();
+});
+
+Then('all accepted boards are displayed', async function () {
+    await boardsPage.verifyAriaPressedStateChange('Accepted');
+});
+
+When('I click on Done', async function () {
+    await boardsPage.clickOnDoneTableAction();
+});
+
+Then('all done boards are displayed', async function () {
+    await boardsPage.verifyAriaPressedStateChange('Done');
+});
+
+When('I click on Cancelled', async function () {
+    await boardsPage.clickOnCancelledTableAction();
+});
+
+Then('all cancelled boards are displayed', async function () {
+    await boardsPage.verifyAriaPressedStateChange('Cancelled');
+});
+
+When('I click on Error', async function () {
+    await boardsPage.clickOnErrorTableAction();
+});
+
+Then('all failed boards are displayed', async function () {
+    await boardsPage.verifyAriaPressedStateChange('Error');
+});
+
+When('I enter a search query for a board', async function () {
+    boardsPage = new Boards_page(Container.resolve(ContainerKeys.page));
+    await boardsPage.fillInBoardSearchInput();
+});
+
+Then('the board details are displayed', async function () {
+    await boardsPage.verifyBoardDetailsAreDisplayed();
+});
+
+When('I click on Cancel button', async function () {
+    await boardsPage.clickOnNewBoardModalCancelButton();
+});
+
+Then('the new board modal should close', async function () {
+    await boardsPage.verifyNewBoardModalNotDisplayed();
+});
+
+When('I click on New Board Icon in sidebar menu', async function () {
+    await boardsPage.clickOnNewBoardIcon();
+});
+
+When('I click on View Boards in Boards in progress widget', async function () {
+    boardsPage = new Boards_page(Container.resolve(ContainerKeys.page));
+    await boardsPage.clickOnInProgressBoardsWidgetButton();
+});
+
+When('I click on View Boards in Accepted boards widget', async function () {
+    await boardsPage.clickOnAcceptedBoardsWidgetButton();
+});
+
+When('Verify that the remaining free boards value is equal or less than 4', async function () {
+    boardsPage = new Boards_page(Container.resolve(ContainerKeys.page));
+    await boardsPage.verifyRemainingFreeBoardsValue();
+});
+
+Then('Verify that the number of free boards are equal or less than 4', async function () {
+    await boardsPage.verifyBoardCountLessThanOrEqualToFour();
+});
+
+When('I navigate to My Boards page', async function () {
+    await boardsPage.navigateToMyBoardsPage();
+});
+
+Then('Verify that the remaining free boards value is correct comparing to the number of free boards in the Order History page', async function () {
+    await boardsPage.ensureMaximumFourFreeBoards();
+});
+
+Then('verify that all board columns are displayed', async function () {
+    await boardsPage.verifyAllBoardColumnsAreDisplayed();
+});
+
+When('I navigate to the order history page', async function () {
+    await boardsPage.clickOnOrderHistoryButton()
+});

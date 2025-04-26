@@ -1,0 +1,221 @@
+import {Base_Page} from "./base_page";
+import {expect} from "@playwright/test";
+
+const selectors = {
+    boardSearchInput: "//div[@data-test='search-baord-input']/input",
+    brdPage: "[data-test='my-boards-heading']",
+    brdBtn: "i.fal.fa-microchip",
+    detailsBtn: "//td[starts-with(@data-test, 'project-name-column')]",
+    boardNameInput: "//td[starts-with(@data-test, 'project-name-column')]//input",
+    inProgressBoardsWidgetButton: "//div[@data-test='boards-in-progress-widget']//button",
+    acceptedBoardsWidgetButton: "//div[@data-test='view-boards-widget']//button",
+    progressBrd: "[data-test='running-boards-table-action']",
+    routeBrd: "[data-test='done-boards-table-action']",
+    boardsTableAction: "[data-test='boards-table-action']",
+    runningTableAction: "[data-test='running-boards-table-action']",
+    acceptedTableAction: "[data-test='accepted-boards-table-action']",
+    doneTableAction: "[data-test='done-boards-table-action']",
+    cancelledTableAction: "[data-test='cancelled-boards-table-action']",
+    errorTableAction: "[data-test='error-boards-table-action']",
+    displayTab: "tbody",
+    editBtn: "//button[contains(@class,'MuiButtonBase-root MuiIconButton-root')]",
+    edit: "//td[starts-with(@data-test, 'project-name-column')]//input[not(@readonly)]",
+    confirmBtn: "//td[starts-with(@data-test, 'project-name-column')]//input[not(@readonly)]/following-sibling::div/button[1]/span",
+    newBoardIcon: "[data-test='new-order-menu-button']",
+    newBoardPage: "h1",
+    addNewBoardBtn: "[data-test='new-board-button']",
+    dsnRadioInput: "[data-test='radio-input-Dsn']",
+    zukenDesignRadioInput: "[data-test='radio-input-Zuken']",
+    kicadRadioInput: "[data-test='radio-input-Kicad']",
+    newBoardModal: "[data-test='new-board-modal-title']",
+    newBoardModalNextBtn: "[data-test='new-board-modal-next-button']",
+    newBoardModalCancelButton: "[data-test='new-board-modal-close-button']",
+    remainingFreeBoardsValue: "//div[@data-test='remaining-free-boards-widget']//p[@data-test='stat']",
+    myBoardsMenuButton: "[data-test='my-boards-menu-button']",
+    boardNameInputFirstIcon: "(//td[starts-with(@data-test, 'project-name-column')]//button)[1]",
+    rowOfFirstProjectNameColumn: "(//td[starts-with(@data-test, 'project-name-column')])[1]/ancestor::tr",
+    zoomOutBoardButton: "//i[contains(@class, 'fa-minus-circle')]/parent::button",
+    dsnFileInput: "//input[@accept=\".dsn\"]",
+    zukenDesignFileInput: "//input[@accept=\".dsgf,.pcf\"]",
+    ftfFileInput: "//input[@accept=\".ftf\"]",
+    rulfFileInput: "//input[@accept=\".rulf\"]",
+    kicad_pcbFileInput: "//input[@accept=\".kicad_pcb\"]",
+    kicad_proFileInput: "//input[@accept=\".kicad_pro\"]",
+    orderHistoryButton: "[data-test='order-history-menu-button']",
+    orderHistoryTitle: "[data-test='order-history-title']",
+
+
+}
+
+export class Boards_page extends Base_Page {
+
+    static countOfElementsWithin24HoursWithFreePrice = 0;
+
+
+
+    async boardPage() {
+        await this.waitForSelectorToBeVisible(selectors.brdPage);
+    }
+
+    async clickOnNewBoardIcon() {
+        await this.click(selectors.newBoardIcon);
+    }
+
+    async clickOnInProgressBoardsWidgetButton() {
+        await this.click(selectors.inProgressBoardsWidgetButton);
+    }
+
+    async clickOnAcceptedBoardsWidgetButton() {
+        await this.click(selectors.acceptedBoardsWidgetButton);
+    }
+
+    async progView() {
+        await this.waitForSelectorToBeVisible(selectors.progressBrd);
+    }
+
+    async routeView() {
+        await this.waitForSelectorToBeVisible(selectors.routeBrd);
+    }
+
+    async clickOnBoardsTableAction() {
+        await this.click(selectors.boardsTableAction);
+    }
+
+    async clickOnRunningTableAction() {
+        await this.click(selectors.runningTableAction);
+    }
+
+    async clickOnAcceptedTableAction() {
+        await this.click(selectors.acceptedTableAction);
+    }
+
+    async clickOnDoneTableAction() {
+        await this.click(selectors.doneTableAction);
+    }
+
+    async clickOnCancelledTableAction() {
+        await this.click(selectors.cancelledTableAction);
+    }
+
+    async clickOnErrorTableAction() {
+        await this.click(selectors.errorTableAction);
+    }
+
+    async fillInBoardSearchInput() {
+        await this.fill(selectors.boardSearchInput, 'reuben');
+    }
+
+
+    async verifyBoardDetailsAreDisplayed() {
+        await this.waitForSelectorToBeVisible(selectors.boardNameInput);
+    }
+
+    async clickOnNewBoardButton() {
+        await this.click(selectors.addNewBoardBtn);
+    }
+
+    async verifyNewBoardModalDisplayed() {
+        await this.waitForSelectorToBeVisible(selectors.newBoardModal);
+    }
+
+    async clickOnNewBoardModalCancelButton() {
+        await this.click(selectors.newBoardModalCancelButton);
+    }
+
+    async verifyNewBoardModalNotDisplayed() {
+        await this.waitForSelectorNotToBeVisible(selectors.newBoardModal);
+    }
+
+    async verifyAriaPressedStateChange(status: string) {
+        await this.waitForSelectorToBeVisible(`//button[@value='${status}'][@aria-pressed='true']`);
+    }
+
+    async verifyRemainingFreeBoardsValue() {
+        await expect(parseInt(await this.page.locator(selectors.remainingFreeBoardsValue).innerText())).toBeLessThanOrEqual(4);
+    }
+
+    async verifyBoardCountLessThanOrEqualToFour() {
+        const createdColumnElements = await this.page.$$("//p[contains(@data-test, 'created-column')]");
+        const currentDate = new Date();
+        const twentyFourHoursAgo = new Date(currentDate.getTime() - (24 * 60 * 60 * 1000));
+        for (const element of createdColumnElements) {
+            const dateTimeText = await (await element.getProperty('textContent')).jsonValue();
+            const [datePart, timePart] = dateTimeText.split(', ');
+            const [day, month, year] = datePart.split('/');
+            const [hours, minutes] = timePart.split(':');
+            const date = new Date(`${year}-${month}-${day}T${hours}:${minutes}:00.000Z`);
+            const localDate = new Date(date.getTime() + (date.getTimezoneOffset() * 60000));
+            if (localDate.getTime() >= twentyFourHoursAgo.getTime()) {
+                const ancestorTr = await element.$('xpath=ancestor::tr');
+                if (ancestorTr) {
+                    const priceElement = await ancestorTr.$("xpath=.//p[contains(@data-test, 'price-column') and text()='Free']");
+                    if (priceElement) {
+                        this.countOfElementsWithin24HoursWithFreePrice++;
+                    }
+                }
+            }
+        }
+    }
+
+
+    async ensureMaximumFourFreeBoards() {
+        const remainingFreeBoardsElement = await this.page.$(selectors.remainingFreeBoardsValue);
+        const remainingFreeBoardsText = await remainingFreeBoardsElement.innerText();
+        const expectedRemainingFreeBoardsNumber = 4 - this.countOfElementsWithin24HoursWithFreePrice;
+        expect(expectedRemainingFreeBoardsNumber).toEqual(parseInt(remainingFreeBoardsText));
+    }
+
+    async navigateToMyBoardsPage() {
+        await this.click(selectors.myBoardsMenuButton);
+    }
+
+    async verifyAllBoardColumnsAreDisplayed() {
+        const columnsTestDataAttributes: string[] = [
+            'project-name-column-',
+            'status-column-',
+            'connected-pairs-column-',
+            'vias-column-',
+            'circuit-length-column-',
+            'time-spent-column-',
+            'type-column-',
+            'created-column-',
+            'rating-column-'
+        ];
+
+        for (const testDataAttribute of columnsTestDataAttributes) {
+            await this.waitForSelectorToBeVisible(`[data-test*='${testDataAttribute}']`);
+        }
+
+    }
+
+    async verifyNewBoardModalRadioInputs() {
+        await this.waitForSelectorToBeVisible(selectors.dsnRadioInput);
+        await this.waitForSelectorToBeVisible(selectors.zukenDesignRadioInput);
+        await this.waitForSelectorToBeVisible(selectors.kicadRadioInput);
+    }
+
+    async verifyNewBoardModalRadioInputFunctionality() {
+        await this.click(selectors.dsnRadioInput);
+        await this.click(selectors.newBoardModalNextBtn);
+        await this.waitForSelectorToExist(selectors.dsnFileInput);
+        await this.click(selectors.newBoardIcon);
+        await this.click(selectors.zukenDesignRadioInput);
+        await this.click(selectors.newBoardModalNextBtn);
+        await this.waitForSelectorToExist(selectors.zukenDesignFileInput);
+        await this.waitForSelectorToExist(selectors.ftfFileInput);
+        await this.waitForSelectorToExist(selectors.rulfFileInput);
+        await this.click(selectors.newBoardIcon);
+        await this.click(selectors.kicadRadioInput);
+        await this.click(selectors.newBoardModalNextBtn);
+        await this.waitForSelectorToExist(selectors.kicad_pcbFileInput);
+        await this.waitForSelectorToExist(selectors.kicad_proFileInput);
+        await this.click(selectors.newBoardIcon);
+    }
+
+    async clickOnOrderHistoryButton() {
+        await this.waitForSelectorToBeVisible(selectors.orderHistoryButton);
+        await this.click(selectors.orderHistoryButton);
+        await this.waitForSelectorToBeVisible(selectors.orderHistoryTitle);
+    }
+
+}

@@ -1,0 +1,230 @@
+(pcb /home/kevin/msp430/ez430/ez430.dsn
+  (parser
+    (string_quote ")
+    (space_in_quoted_tokens on)
+    (host_cad DeepPCB)
+  )
+  (resolution um 10)
+  (unit um)
+  (structure
+    (layer F.Cu
+      (type signal)
+      (property
+        (index 0)
+      )
+    )
+    (layer B.Cu
+      (type signal)
+      (property
+        (index 1)
+      )
+    )
+    (boundary (path signal 0 94869 -40703.5 121834 -40703.5 121834 -74432.1 94869 -74432.1 94869 -40703.5))
+    (control
+      (via_at_smd off)
+    )
+    (via "Via[0-1]_889:635_um" "Via[0-1]_889:0_um")
+    (rule
+      (width 254)
+      (clearance 254.1)
+    )
+  )
+  (placement (place_control (flip_style mirror_first))
+    (component "tssop-14"
+      (place U1 100457 -60579 front 270)
+    )
+    (component R3
+      (place R1 109855 -61976 front 180)
+      (place R2 109601 -57023 front 0)
+    )
+    (component "HEADER-1x0.1inch"
+      (place P3 114300 -54737 front 0)
+      (place P2 114808 -65532 front 0)
+    )
+    (component C1.5V8H
+      (place C1 100203 -56388 front 180)
+    )
+    (component "851-87-20-006-001101"
+      (place J1 116205 -60452 front 270)
+    )
+    (component "HEADER-7x2-0.1inch"
+      (place P1 104267 -65786 front 180)
+    )
+  )
+  (library
+    (image "tssop-14"
+      (outline (path signal 127 -1621 -1524 -1634.9 -1611.8 -1675.3 -1690.9 -1738.1 -1753.7 -1817.3 -1794.1 -1905 -1808 -1992.8 -1794.1 -2071.9 -1753.7 -2134.7 -1690.9 -2175.1 -1611.8 -2189 -1524 -2175.1 -1436.3 -2134.7 -1357.1 -2071.9 -1294.3 -1992.8 -1253.9 -1905 -1240 -1817.3 -1253.9 -1738.1 -1294.3 -1675.3 -1357.1 -1634.9 -1436.3))
+      (outline (path signal 127 2540 2286 -2540 2286))
+      (outline (path signal 127 -2540 2286 -2540 -2286))
+      (outline (path signal 127 -2540 -2286 2540 -2286))
+      (outline (path signal 127 2540 -2286 2540 2286))
+      (pin Rect[T]Pad_419.1x1470.66_um 4 0 -2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 5 650.2 -2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 6 1300.5 -2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 7 1950.7 -2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 8 1950.7 2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 1 -1950.7 -2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 2 -1300.5 -2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 3 -650.2 -2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 9 1300.5 2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 10 650.2 2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 11 0 2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 12 -650.2 2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 13 -1300.5 2799.1)
+      (pin Rect[T]Pad_419.1x1470.66_um 14 -1950.7 2799.1)
+    )
+    (image R3
+      (outline (path signal 203.2 -3810 0 -3302 0))
+      (outline (path signal 203.2 3810 0 3302 0))
+      (outline (path signal 203.2 3302 0 3302 1016))
+      (outline (path signal 203.2 3302 1016 -3302 1016))
+      (outline (path signal 203.2 -3302 1016 -3302 -1016))
+      (outline (path signal 203.2 -3302 -1016 3302 -1016))
+      (outline (path signal 203.2 3302 -1016 3302 0))
+      (outline (path signal 203.2 -3302 508 -2794 1016))
+      (pin Round[A]Pad_1397_um 1 -3810 0)
+      (pin Round[A]Pad_1397_um 2 3810 0)
+    )
+    (image "HEADER-1x0.1inch"
+      (pin Round[A]Pad_1752.6_um 1 0 0)
+    )
+    (image C1.5V8H
+      (outline (path signal 381 -4064 -15240 4064 -15240))
+      (outline (path signal 381 4064 -2540 -4064 -2540))
+      (outline (path signal 381 -4064 -2540 -4064 -15240))
+      (outline (path signal 381 4064 -2540 4064 -15240))
+      (outline (path signal 381 -1905 0 -1905 -2540))
+      (outline (path signal 381 1905 0 1905 -2540))
+      (pin Rect[A]Pad_1651x1651_um 1 1905 0)
+      (pin Round[A]Pad_1651_um 2 -1905 0)
+    )
+    (image "851-87-20-006-001101"
+      (outline (path signal 150 4100 1200 -4100 1200))
+      (outline (path signal 150 4100 0 4100 5300))
+      (outline (path signal 150 4100 5300 -4100 5300))
+      (outline (path signal 150 -4100 5300 -4100 0))
+      (pin Round[A]Pad_990.6_um 4 -635 0)
+      (pin Round[A]Pad_990.6_um 3 635 0)
+      (pin Round[A]Pad_990.6_um 5 -1905 0)
+      (pin Round[A]Pad_990.6_um 2 1905 0)
+      (pin Round[A]Pad_990.6_um 6 -3175 0)
+      (pin Round[A]Pad_990.6_um 1 3175 0)
+    )
+    (image "HEADER-7x2-0.1inch"
+      (pin Round[A]Pad_1500_um 10 -2540 -1270)
+      (pin Round[A]Pad_1500_um 11 0 -1270)
+      (pin Round[A]Pad_1500_um 2 -5080 1270)
+      (pin Round[A]Pad_1500_um 3 -2540 1270)
+      (pin Round[A]Pad_1500_um 4 0 1270)
+      (pin Round[A]Pad_1500_um 5 2540 1270)
+      (pin Round[A]Pad_1500_um 6 5080 1270)
+      (pin Round[A]Pad_1500_um 1 -7620 1270)
+      (pin Round[A]Pad_1500_um 7 7620 1270)
+      (pin Round[A]Pad_1500_um 8 -7620 -1270)
+      (pin Round[A]Pad_1500_um 9 -5080 -1270)
+      (pin Round[A]Pad_1500_um 12 2540 -1270)
+      (pin Round[A]Pad_1500_um 13 5080 -1270)
+      (pin Round[A]Pad_1500_um 14 7620 -1270)
+    )
+    (padstack Round[A]Pad_1397_um
+      (shape (circle F.Cu 1397))
+      (shape (circle B.Cu 1397))
+    )
+    (padstack Round[A]Pad_1500_um
+      (shape (circle F.Cu 1500))
+      (shape (circle B.Cu 1500))
+    )
+    (padstack Round[A]Pad_1651_um
+      (shape (circle F.Cu 1651))
+      (shape (circle B.Cu 1651))
+    )
+    (padstack Round[A]Pad_1752.6_um
+      (shape (circle F.Cu 1752.6))
+      (shape (circle B.Cu 1752.6))
+    )
+    (padstack Round[A]Pad_990.6_um
+      (shape (circle F.Cu 990.6))
+      (shape (circle B.Cu 990.6))
+    )
+    (padstack Rect[T]Pad_419.1x1470.66_um
+      (shape (rect F.Cu -209.6 -735.3 209.6 735.3))
+      (attach off)
+    )
+    (padstack Rect[A]Pad_1651x1651_um
+      (shape (rect F.Cu -825.5 -825.5 825.5 825.5))
+      (shape (rect B.Cu -825.5 -825.5 825.5 825.5))
+    )
+    (padstack "Via[0-1]_889:635_um"
+      (shape (circle F.Cu 889))
+      (shape (circle B.Cu 889))
+    )
+    (padstack "Via[0-1]_889:0_um"
+      (shape (circle F.Cu 889))
+      (shape (circle B.Cu 889))
+    )
+  )
+  (network
+    (net /BRXD
+      (pins P3-1 J1-6)
+    )
+    (net /BTXD
+      (pins P2-1 J1-1)
+    )
+    (net /P1.0
+      (pins U1-2 P1-3)
+    )
+    (net /P1.1
+      (pins U1-3 P1-5)
+    )
+    (net /P1.2
+      (pins U1-4 P1-7)
+    )
+    (net /P1.3
+      (pins U1-5 P1-9)
+    )
+    (net /P1.4
+      (pins U1-6 P1-11)
+    )
+    (net /P1.5
+      (pins U1-7 P1-13)
+    )
+    (net /P1.6
+      (pins U1-8 P1-14)
+    )
+    (net /P1.7
+      (pins U1-9 P1-12)
+    )
+    (net /P2.6
+      (pins U1-13 P1-4)
+    )
+    (net /P2.7
+      (pins U1-12 P1-6)
+    )
+    (net /TEST
+      (pins U1-11 J1-3 P1-8)
+    )
+    (net /~RST
+      (pins U1-10 R1-2 J1-4 P1-10)
+    )
+    (net GND
+      (pins U1-14 C1-2 J1-5 P1-2)
+    )
+    (net "N-000005"
+      (pins R2-2 J1-2)
+    )
+    (net VCC
+      (pins U1-1 R1-1 R2-1 C1-1 P1-1)
+    )
+    (class kicad_default "" /BRXD /BTXD /P1.0 /P1.1 /P1.2 /P1.3 /P1.4 /P1.5 /P1.6 /P1.7 /P2.6 /P2.7 /TEST /~RST GND "N-000005" VCC
+      (circuit
+        (use_via "Via[0-1]_889:635_um")
+      )
+      (rule
+        (width 254)
+        (clearance 254.1)
+      )
+    )
+  )
+  (wiring
+  )
+)

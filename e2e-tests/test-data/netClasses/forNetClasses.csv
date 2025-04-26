@@ -1,0 +1,2 @@
+Name,Clearance,Track Width,Via Definition,Assigned Nets,Actions
+Default,100,121,Via[0-5]_457.2:203.2mm,USB1_PWR NetTP7_1 NetTP6_1 NetTP5_1 +306,
